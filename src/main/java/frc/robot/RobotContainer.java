@@ -47,17 +47,17 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-        /*swerveSubsystem.setDefaultCommand(new SwerveJoystick(swerveSubsystem,
-     () -> -driverController.getRawAxis(OIConstants.kDriverYAxis), 
+        swerveSubsystem.setDefaultCommand(new SwerveJoystick(swerveSubsystem,
+     () -> driverController.getRawAxis(OIConstants.kDriverYAxis), 
      () -> driverController.getRawAxis(OIConstants.kDriverXAxis), 
      () -> driverController.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !driverController.getLeftBumper()));*/
+     () -> !driverController.getLeftBumper()));
 
-     swerveSubsystem.setDefaultCommand(new SwerveFlightStick(swerveSubsystem,
+    /*  swerveSubsystem.setDefaultCommand(new SwerveFlightStick(swerveSubsystem,
      () -> -flightStick.getRawAxis(OIConstants.kDriverYAxis), 
      () -> flightStick.getRawAxis(OIConstants.kDriverXAxis), 
      () -> flightStick.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !flightStick.getRawButtonPressed(OIConstants.fieldOrientedButton)));
+     () -> !flightStick.getRawButtonPressed(OIConstants.fieldOrientedButton))); */
 
 
 

@@ -60,6 +60,14 @@ public class SwerveModule {
 
         turnSparkPIDController = turnMotor.getPIDController();
 
+        driveMotor.setSmartCurrentLimit(30);
+        turnMotor.setSmartCurrentLimit(30);
+
+        //driveMotor.setOpenLoopRampRate(1);
+
+        driveMotor.setIdleMode(IdleMode.kCoast);
+        turnMotor.setIdleMode(IdleMode.kCoast);
+
         driveMotor.burnFlash();
         turnMotor.burnFlash();
 
@@ -83,7 +91,7 @@ public class SwerveModule {
     }
 
     public double getAbsoluteEncoderRad() {
-        double angle = (absoluteEncoder.getAbsolutePosition().getValueAsDouble() * Math.PI / 180);
+        double angle = (absoluteEncoder.getAbsolutePosition().getValueAsDouble() * Math.PI * 2);
         angle -= absoluteEncoderOffsetRad;
         return angle * (absoluteEncoderReversed ? -1.0 : 1.0);
     }
