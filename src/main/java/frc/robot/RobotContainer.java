@@ -47,17 +47,21 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-        swerveSubsystem.setDefaultCommand(new SwerveJoystick(swerveSubsystem,
+        
+        /*swerveSubsystem.setDefaultCommand(new SwerveJoystick(swerveSubsystem,
      () -> driverController.getRawAxis(OIConstants.kDriverYAxis), 
      () -> driverController.getRawAxis(OIConstants.kDriverXAxis), 
      () -> driverController.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !driverController.getLeftBumper()));
+     () -> !driverController.getLeftBumper()));*/
 
-    /*  swerveSubsystem.setDefaultCommand(new SwerveFlightStick(swerveSubsystem,
-     () -> -flightStick.getRawAxis(OIConstants.kDriverYAxis), 
-     () -> flightStick.getRawAxis(OIConstants.kDriverXAxis), 
-     () -> flightStick.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !flightStick.getRawButtonPressed(OIConstants.fieldOrientedButton))); */
+      swerveSubsystem.setDefaultCommand(new SwerveFlightStick(swerveSubsystem,
+     () -> flightStick.getRawAxis(OIConstants.kDriverYAxis) * 
+                mapDouble(flightStick.getRawAxis(OIConstants.kDriveThrottle), 1, -1, .25, 1), 
+     () -> flightStick.getRawAxis(OIConstants.kDriverXAxis) * 
+                mapDouble(flightStick.getRawAxis(OIConstants.kDriveThrottle), 1, -1, .25, 1), 
+     () -> flightStick.getRawAxis(OIConstants.kDriverRotAxis) * 
+                mapDouble(flightStick.getRawAxis(OIConstants.kDriveThrottle), 1, -1, .25, 1), 
+     () -> !flightStick.getRawButtonPressed(OIConstants.fieldOrientedButton))); 
 
 
 
@@ -74,6 +78,10 @@ public class RobotContainer {
    */
   private void configureBindings() {
   }
+
+  private static double mapDouble(double valueIn, double baseMin, double baseMax, double limitMin, double limitMax) {
+        return ((limitMax - limitMin) * (valueIn - baseMin) / (baseMax - baseMin)) + limitMin;
+      }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

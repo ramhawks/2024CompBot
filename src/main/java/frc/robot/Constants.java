@@ -125,12 +125,12 @@ public final class Constants {
         public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0.0;
 
         public static final double kPhysicalMaxSpeedMetersPerSecond = 3.81;
-        public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
+        public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 5 * Math.PI;
 
         public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 1.5;
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
-        public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 2;
-        public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 2;
+        public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 2.5;
+        public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 2.5;
 
         public static final double kSlowButtonDriveModifier = 0.25;
         public static final double kSlowButtonTurnModifier = 0.5;
@@ -156,12 +156,14 @@ public final class Constants {
 
         public static final int kDriverYAxis = 1;
         public static final int kDriverXAxis = 0;
-        public static final int kDriverRotAxis = 4;
+        public static final int kDriverRotAxis = 2;
         public static final int kDriverFieldOrientedButtonIdx = 1;
 
-        public static final double kDeadband = 0.05;
+        public static final double kDeadband = 0.15;
 
         public static final int fieldOrientedButton = 12;
+
+        public static final int kDriveThrottle = 3;
     }
 
 }
